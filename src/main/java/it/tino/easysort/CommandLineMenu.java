@@ -31,8 +31,8 @@ public class CommandLineMenu implements Menu {
         this.listReader = listReader;
         this.realTimeListReader = realTimeListReader;
 
-        sortingAlgorithms.put("bubble", bubbleSort);
-        sortingAlgorithms.put("insertion", insertionSort);
+        sortingAlgorithms.put("bubble", this.bubbleSort);
+        sortingAlgorithms.put("insertion", this.insertionSort);
     }
 
     @Override
