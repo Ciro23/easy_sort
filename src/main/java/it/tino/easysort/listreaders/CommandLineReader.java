@@ -1,4 +1,4 @@
-package it.tino.easysort;
+package it.tino.easysort.listreaders;
 
 import it.tino.easysort.interfaces.RealTimeListReader;
 

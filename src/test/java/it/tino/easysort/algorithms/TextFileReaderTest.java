@@ -1,6 +1,6 @@
 package it.tino.easysort.algorithms;
 
-import it.tino.easysort.TextFileReader;
+import it.tino.easysort.listreaders.TextFileReader;
 import it.tino.easysort.interfaces.ListReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

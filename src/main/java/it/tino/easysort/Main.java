@@ -5,6 +5,8 @@ import it.tino.easysort.interfaces.ListReader;
 import it.tino.easysort.interfaces.Menu;
 import it.tino.easysort.interfaces.RealTimeListReader;
 import it.tino.easysort.interfaces.SortingAlgorithm;
+import it.tino.easysort.listreaders.CommandLineReader;
+import it.tino.easysort.listreaders.TextFileReader;
 
 public class Main {
 
