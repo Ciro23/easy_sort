@@ -24,7 +24,7 @@ public class CommandLineReaderTest {
     private final RealTimeListReader listReader = new CommandLineReader(new PrintStream(out), scanner);
 
     @Test
-    public void testFileReading() {
+    public void testCommandLineReading() {
         List<String> expected = Arrays.asList(simulatedUserInput.split(System.getProperty("line.separator")));
 
         List<String> actual = listReader.readLines();
