@@ -1,6 +1,5 @@
 package it.tino.easysort.algorithms;
 
-
 import it.tino.easysort.interfaces.Sort;
 
 import java.util.Collections;
