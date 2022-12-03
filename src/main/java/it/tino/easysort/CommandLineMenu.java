@@ -5,13 +5,12 @@ import it.tino.easysort.interfaces.Menu;
 import it.tino.easysort.interfaces.RealTimeListReader;
 import it.tino.easysort.interfaces.SortingAlgorithm;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class CommandLineMenu implements Menu {
     
+    private final PrintStream out;
     private final ListReader listReader;
     private final RealTimeListReader realTimeListReader;
     private final SortingAlgorithm<String> bubbleSort;
@@ -20,11 +19,13 @@ public class CommandLineMenu implements Menu {
     private final Map<String, SortingAlgorithm<String>> sortingAlgorithms = new HashMap<>();
 
     public CommandLineMenu(
-        SortingAlgorithm<String> bubbleSort,
-        SortingAlgorithm<String> insertionSort,
-        ListReader listReader,
-        RealTimeListReader realTimeListReader
+            PrintStream out,
+            SortingAlgorithm<String> bubbleSort,
+            SortingAlgorithm<String> insertionSort,
+            ListReader listReader,
+            RealTimeListReader realTimeListReader
     ) {
+        this.out = out;
         this.bubbleSort = bubbleSort;
         this.insertionSort = insertionSort;
         this.listReader = listReader;
@@ -56,16 +57,16 @@ public class CommandLineMenu implements Menu {
     }
 
     private void displayResult(List<String> list, String name) {
-        System.out.println("Used " + name);
+        out.println("Used " + name);
         int i = 0;
         for (String element : list) {
-            System.out.println(++i + ". " + element);
+            out.println(++i + ". " + element);
         }
     }
 
     private void displaySelections() {
-        System.out.println("Choose sorting algorithm");
-        System.out.println("1 - Bubble sort");
-        System.out.println("2 - Insertion sort");
+        out.println("Choose sorting algorithm");
+        out.println("1 - Bubble sort");
+        out.println("2 - Insertion sort");
     }
 }

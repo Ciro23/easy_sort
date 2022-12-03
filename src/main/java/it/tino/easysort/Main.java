@@ -8,15 +8,18 @@ import it.tino.easysort.interfaces.SortingAlgorithm;
 import it.tino.easysort.listreaders.CommandLineReader;
 import it.tino.easysort.listreaders.TextFileReader;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
         SortingAlgorithm<String> bubbleSort = new BubbleSort<>();
         SortingAlgorithm<String> insertionSort = new BubbleSort<>();
         ListReader textFileReader = new TextFileReader();
-        RealTimeListReader commandLineReader = new CommandLineReader();
+        RealTimeListReader commandLineReader = new CommandLineReader(System.out, new Scanner(System.in));
 
         Menu menu = new CommandLineMenu(
+            System.out,
             bubbleSort,
             insertionSort,
             textFileReader,

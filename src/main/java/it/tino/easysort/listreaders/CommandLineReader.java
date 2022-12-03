@@ -2,13 +2,20 @@ package it.tino.easysort.listreaders;
 
 import it.tino.easysort.interfaces.RealTimeListReader;
 
+import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CommandLineReader implements RealTimeListReader {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private final PrintStream out;
+    private final Scanner scanner;
+
+    public CommandLineReader(PrintStream out, Scanner scanner) {
+        this.out = out;
+        this.scanner = scanner;
+    }
 
     @Override
     public List<String> readLines() {
