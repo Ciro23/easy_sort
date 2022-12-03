@@ -1,6 +1,6 @@
 package it.tino.easysort.algorithms;
 
-import it.tino.easysort.interfaces.Sort;
+import it.tino.easysort.interfaces.SortingAlgorithm;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class InsertionSortTest {
 
-    private final Sort<Integer> insertionSort;
+    private final SortingAlgorithm<Integer> insertionSort;
 
     public InsertionSortTest() {
         insertionSort = new InsertionSort<>();

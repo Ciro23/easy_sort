@@ -1,11 +1,11 @@
 package it.tino.easysort.algorithms;
 
-import it.tino.easysort.interfaces.Sort;
+import it.tino.easysort.interfaces.SortingAlgorithm;
 
 import java.util.Collections;
 import java.util.List;
 
-public class BubbleSort<T extends Comparable<T>> implements Sort<T> {
+public class BubbleSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 
     @Override
     public void sort(List<T> list) {
