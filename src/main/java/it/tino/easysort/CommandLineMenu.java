@@ -2,6 +2,7 @@ package it.tino.easysort;
 
 import it.tino.easysort.interfaces.ListReader;
 import it.tino.easysort.interfaces.Menu;
+import it.tino.easysort.interfaces.RealTimeListReader;
 import it.tino.easysort.interfaces.SortingAlgorithm;
 
 import java.io.File;
@@ -13,6 +14,7 @@ public class CommandLineMenu implements Menu {
 
     private final Scanner scanner = new Scanner(System.in);
     private final ListReader listReader;
+    private final RealTimeListReader realTimeListReader;
     private final SortingAlgorithm<String> bubbleSort;
     private final SortingAlgorithm<String> insertionSort;
 
@@ -21,11 +23,13 @@ public class CommandLineMenu implements Menu {
     public CommandLineMenu(
         SortingAlgorithm<String> bubbleSort,
         SortingAlgorithm<String> insertionSort,
-        ListReader listReader
+        ListReader listReader,
+        RealTimeListReader realTimeListReader
     ) {
         this.bubbleSort = bubbleSort;
         this.insertionSort = insertionSort;
         this.listReader = listReader;
+        this.realTimeListReader = realTimeListReader;
 
         sortingAlgorithms.put("bubble", bubbleSort);
         sortingAlgorithms.put("insertion", insertionSort);
@@ -35,11 +39,15 @@ public class CommandLineMenu implements Menu {
     public void handleUserRequest(String[] args) {
         List<String> list;
 
-        try {
-            File file = new File(args[1]);
-            list = listReader.readLines(new FileInputStream(file));
-        } catch (FileNotFoundException e) {
-            list = Collections.emptyList();
+        if (args.length == 0) {
+            list = realTimeListReader.readLines();
+        } else {
+            try {
+                File file = new File(args[1]);
+                list = listReader.readLines(new FileInputStream(file));
+            } catch (FileNotFoundException e) {
+                list = Collections.emptyList();
+            }
         }
 
         SortingAlgorithm<String> sortingAlgorithm = sortingAlgorithms.getOrDefault(args[0], bubbleSort);
@@ -54,5 +62,11 @@ public class CommandLineMenu implements Menu {
         for (String element : list) {
             System.out.println(++i + ". " + element);
         }
+    }
+
+    private void displaySelections() {
+        System.out.println("Choose sorting algorithm");
+        System.out.println("1 - Bubble sort");
+        System.out.println("2 - Insertion sort");
     }
 }
