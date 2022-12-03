@@ -23,14 +23,12 @@ public class CommandLineReader implements RealTimeListReader {
         String selection = "while_gotta_start";
         LinkedList<String> list = new LinkedList<>();
 
-        while (!selection.isEmpty()) {
-            System.out.println("Insert the element number " + ++i + ", or press ENTER to finish");
-            selection = scanner.next();
-
-            if (!selection.isEmpty()) {
-                list.addLast(selection);
-            }
+        while (scanner.hasNext()) {
+            out.println("Insert the element number " + ++i + ", or press ENTER to finish");
+            selection = scanner.nextLine();
+            list.addLast(selection);
         }
+
         return list;
     }
 }
