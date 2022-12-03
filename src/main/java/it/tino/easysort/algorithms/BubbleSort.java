@@ -1,8 +1,8 @@
-package algorithms;
+package it.tino.easysort.algorithms;
 
-import interfaces.Sort;
 
-import java.util.Collection;
+import it.tino.easysort.interfaces.Sort;
+
 import java.util.Collections;
 import java.util.List;
 
