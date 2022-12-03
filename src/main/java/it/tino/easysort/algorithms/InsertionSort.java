@@ -19,4 +19,9 @@ public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<
             list.set(j + 1, current);
         }
     }
+
+    @Override
+    public String getName() {
+        return "Insertion sort";
+    }
 }
