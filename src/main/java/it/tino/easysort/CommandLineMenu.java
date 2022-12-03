@@ -11,8 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class CommandLineMenu implements Menu {
-
-    private final Scanner scanner = new Scanner(System.in);
+    
     private final ListReader listReader;
     private final RealTimeListReader realTimeListReader;
     private final SortingAlgorithm<String> bubbleSort;
