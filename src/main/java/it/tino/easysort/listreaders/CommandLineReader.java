@@ -20,15 +20,28 @@ public class CommandLineReader implements RealTimeListReader {
     @Override
     public List<String> readLines() {
         int i = 0;
-        String selection = "while_gotta_start";
+        String selection;
         LinkedList<String> list = new LinkedList<>();
 
-        while (scanner.hasNext()) {
-            out.println("Insert the element number " + ++i + ", or press ENTER to finish");
+        do {
+            out.println("Insert the element number " + ++i + ", or --stop to finish");
             selection = scanner.nextLine();
-            list.addLast(selection);
-        }
+
+            if (!selection.equalsIgnoreCase("--stop")) {
+                list.addLast(selection);
+            }
+
+        } while (scanner.hasNext() && !selection.equalsIgnoreCase("--stop"));
 
         return list;
+    }
+
+    @Override
+    public String readSortingAlgorithm() {
+        out.println("Choose the sorting algorithm");
+        out.println("(Bubble) sort");
+        out.println("(Insertion) sort");
+
+        return scanner.nextLine();
     }
 }

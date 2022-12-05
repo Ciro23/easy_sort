@@ -63,10 +63,4 @@ public class CommandLineMenu implements Menu {
             out.println(++i + ". " + element);
         }
     }
-
-    private void displaySelections() {
-        out.println("Choose sorting algorithm");
-        out.println("1 - Bubble sort");
-        out.println("2 - Insertion sort");
-    }
 }
