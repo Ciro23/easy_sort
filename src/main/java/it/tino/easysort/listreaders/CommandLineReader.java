@@ -23,15 +23,16 @@ public class CommandLineReader implements RealTimeListReader {
         String selection;
         LinkedList<String> list = new LinkedList<>();
 
-        do {
+        while (true) {
             out.println("Insert the element number " + ++i + ", or --stop to finish");
             selection = scanner.nextLine();
 
-            if (!selection.equalsIgnoreCase("--stop")) {
+            if (selection.equalsIgnoreCase("--stop")) {
+                break;
+            } else {
                 list.addLast(selection);
             }
-
-        } while (scanner.hasNext() && !selection.equalsIgnoreCase("--stop"));
+        };
 
         return list;
     }
