@@ -54,13 +54,16 @@ public class CommandLineMenu implements Menu {
         }
 
         SortingAlgorithm<String> sortingAlgorithm = sortingAlgorithms.getOrDefault(algorithmName, bubbleSort);
+        long start = System.currentTimeMillis();
         sortingAlgorithm.sort(list);
+        long end = System.currentTimeMillis();
+        long elapsed = end - start;
 
-        displayResult(list, sortingAlgorithm.getName());
+        displayResult(list, sortingAlgorithm.getName(), elapsed);
     }
 
-    private void displayResult(List<String> list, String name) {
-        out.println("Used " + name);
+    private void displayResult(List<String> list, String name, long elapsed) {
+        out.println("Used " + name + ", execution time: " + elapsed + "ms");
         int i = 0;
         for (String element : list) {
             out.println(++i + ". " + element);
