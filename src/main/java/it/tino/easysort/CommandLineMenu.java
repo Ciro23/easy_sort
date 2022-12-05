@@ -38,10 +38,13 @@ public class CommandLineMenu implements Menu {
     @Override
     public void handleUserRequest(String[] args) {
         List<String> list;
+        String algorithmName;
 
         if (args.length == 0) {
+            algorithmName = realTimeListReader.readSortingAlgorithm();
             list = realTimeListReader.readLines();
         } else {
+            algorithmName = args[0];
             try {
                 File file = new File(args[1]);
                 list = listReader.readLines(new FileInputStream(file));
@@ -50,7 +53,7 @@ public class CommandLineMenu implements Menu {
             }
         }
 
-        SortingAlgorithm<String> sortingAlgorithm = sortingAlgorithms.getOrDefault(args[0], bubbleSort);
+        SortingAlgorithm<String> sortingAlgorithm = sortingAlgorithms.getOrDefault(algorithmName, bubbleSort);
         sortingAlgorithm.sort(list);
 
         displayResult(list, sortingAlgorithm.getName());
