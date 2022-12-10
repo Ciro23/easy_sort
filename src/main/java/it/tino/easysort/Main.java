@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        SortingAlgorithm<String> bubbleSort = new BubbleSort<>();
-        SortingAlgorithm<String> insertionSort = new InsertionSort<>();
+        SortingAlgorithm<Double> bubbleSort = new BubbleSort<>();
+        SortingAlgorithm<Double> insertionSort = new InsertionSort<>();
         ListReader textFileReader = new TextFileReader();
         RealTimeListReader commandLineReader = new CommandLineReader(System.out, new Scanner(System.in));
 

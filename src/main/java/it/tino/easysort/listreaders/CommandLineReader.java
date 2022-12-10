@@ -18,19 +18,21 @@ public class CommandLineReader implements RealTimeListReader {
     }
 
     @Override
-    public List<String> readLines() {
+    public List<Double> readLines() {
         int i = 0;
-        String selection;
-        LinkedList<String> list = new LinkedList<>();
+        Double selection;
+        LinkedList<Double> list = new LinkedList<>();
 
         while (true) {
             out.println("Insert the element number " + ++i + ", or --stop to finish");
-            selection = scanner.nextLine();
+            String lineEntered = scanner.nextLine();
 
-            if (selection.equalsIgnoreCase("--stop")) {
+            if (lineEntered.equalsIgnoreCase("--stop")) {
                 break;
             } else {
-                list.addLast(selection);
+                try {
+                    list.addLast(Double.valueOf(lineEntered));
+                } catch (NumberFormatException ignore) {}
             }
         };
 

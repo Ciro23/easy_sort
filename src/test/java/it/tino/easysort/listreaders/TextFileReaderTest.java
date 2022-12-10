@@ -16,14 +16,14 @@ public class TextFileReaderTest {
     public void testFileReading() {
         ListReader listReader = new TextFileReader();
 
-        List<String> expected = Arrays.asList("first_line", "second_line", "third_line");
+        List<String> lines = Arrays.asList("1", "2", "3");
 
-        String fileContent = String.join("\n", expected);
+        String fileContent = String.join("\n", lines);
         InputStream inputStream = new ByteArrayInputStream(fileContent.getBytes());
 
-        List<String> actual = listReader.readLines(inputStream);
+        List<Double> actual = listReader.readLines(inputStream);
 
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(Arrays.asList(1d, 2d, 3d), actual);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class TextFileReaderTest {
         String fileContent = "   ";
         InputStream inputStream = new ByteArrayInputStream(fileContent.getBytes());
 
-        List<String> actual = listReader.readLines(inputStream);
+        List<Double> actual = listReader.readLines(inputStream);
 
         Assertions.assertEquals(Collections.emptyList(), actual);
     }

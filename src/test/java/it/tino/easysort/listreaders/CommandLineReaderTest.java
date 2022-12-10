@@ -18,7 +18,7 @@ public class CommandLineReaderTest {
     // so that no application output is shown in the console during tests
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    private final String simulatedUserInput = "first" + System.getProperty("line.separator") + "--stop";
+    private final String simulatedUserInput = "1" + System.getProperty("line.separator") + "--stop";
 
     private final Scanner scanner = new Scanner(new ByteArrayInputStream(simulatedUserInput.getBytes()));
 
@@ -26,12 +26,22 @@ public class CommandLineReaderTest {
 
     @Test
     public void testCommandLineReading() {
-        LinkedList<String> expected = new LinkedList<>(Arrays.asList(simulatedUserInput.split(System.getProperty("line.separator"))));
-        // last input is the command to stop
-        expected.removeLast();
+        LinkedList<Double> expected = convertUserInput(new LinkedList<>(Arrays.asList(simulatedUserInput.split(System.getProperty("line.separator")))));
 
-        List<String> actual = listReader.readLines();
+        List<Double> actual = listReader.readLines();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    private LinkedList<Double> convertUserInput(LinkedList<String> userInput) {
+        // last input is the command to stop
+        userInput.removeLast();
+
+        LinkedList<Double> converted = new LinkedList<>();
+        for (String input : userInput) {
+            converted.addLast(Double.valueOf(input));
+        }
+
+        return converted;
     }
 }

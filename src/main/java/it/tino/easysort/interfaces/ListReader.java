@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface ListReader {
 
-    List<String> readLines(InputStream inputStream);
+    List<Double> readLines(InputStream inputStream);
 }

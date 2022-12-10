@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface RealTimeListReader {
 
-    List<String> readLines();
+    List<Double> readLines();
 
     String readSortingAlgorithm();
 }

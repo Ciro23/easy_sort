@@ -8,20 +8,21 @@ import it.tino.easysort.interfaces.SortingAlgorithm;
 import java.io.*;
 import java.util.*;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class CommandLineMenu implements Menu {
     
     private final PrintStream out;
     private final ListReader listReader;
     private final RealTimeListReader realTimeListReader;
-    private final SortingAlgorithm<String> bubbleSort;
-    private final SortingAlgorithm<String> insertionSort;
+    private final SortingAlgorithm<Double> bubbleSort;
+    private final SortingAlgorithm<Double> insertionSort;
 
-    private final Map<String, SortingAlgorithm<String>> sortingAlgorithms = new HashMap<>();
+    private final Map<String, SortingAlgorithm<Double>> sortingAlgorithms = new HashMap<>();
 
     public CommandLineMenu(
             PrintStream out,
-            SortingAlgorithm<String> bubbleSort,
-            SortingAlgorithm<String> insertionSort,
+            SortingAlgorithm<Double> bubbleSort,
+            SortingAlgorithm<Double> insertionSort,
             ListReader listReader,
             RealTimeListReader realTimeListReader
     ) {
@@ -37,7 +38,7 @@ public class CommandLineMenu implements Menu {
 
     @Override
     public void handleUserRequest(String[] args) {
-        List<String> list;
+        List<Double> list;
         String algorithmName;
 
         if (args.length == 0) {
@@ -53,7 +54,7 @@ public class CommandLineMenu implements Menu {
             }
         }
 
-        SortingAlgorithm<String> sortingAlgorithm = sortingAlgorithms.getOrDefault(algorithmName, bubbleSort);
+        SortingAlgorithm<Double> sortingAlgorithm = sortingAlgorithms.getOrDefault(algorithmName, bubbleSort);
         long start = System.currentTimeMillis();
         sortingAlgorithm.sort(list);
         long end = System.currentTimeMillis();
@@ -62,10 +63,10 @@ public class CommandLineMenu implements Menu {
         displayResult(list, sortingAlgorithm.getName(), elapsed);
     }
 
-    private void displayResult(List<String> list, String name, long elapsed) {
+    private void displayResult(List<Double> list, String name, long elapsed) {
         out.println("Used " + name + ", execution time: " + elapsed + "ms");
         int i = 0;
-        for (String element : list) {
+        for (Double element : list) {
             out.println(++i + ". " + element);
         }
     }

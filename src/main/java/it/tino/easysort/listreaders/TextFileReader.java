@@ -16,17 +16,16 @@ public class TextFileReader implements ListReader {
      * Reads an inputStream into a list of non-empty lines
      */
     @Override
-    public List<String> readLines(InputStream inputStream) {
+    public List<Double> readLines(InputStream inputStream) {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-        LinkedList<String> list = new LinkedList<>();
+        LinkedList<Double> list = new LinkedList<>();
         try {
             while (bufferedReader.ready()) {
-                String line = bufferedReader.readLine().trim();
-
-                if (!line.isEmpty()) {
+                try {
+                    Double line = Double.valueOf(bufferedReader.readLine().trim());
                     list.addLast(line);
-                }
+                } catch (NumberFormatException ignore) {}
             }
         } catch (IOException e) {
             return Collections.emptyList();
