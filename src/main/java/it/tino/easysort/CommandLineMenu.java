@@ -8,14 +8,12 @@ import it.tino.easysort.interfaces.SortingAlgorithm;
 import java.io.*;
 import java.util.*;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class CommandLineMenu implements Menu {
     
     private final PrintStream out;
     private final ListReader listReader;
     private final RealTimeListReader realTimeListReader;
-    private final SortingAlgorithm<Double> bubbleSort;
-    private final SortingAlgorithm<Double> insertionSort;
+    private final SortingAlgorithm<Double> defaultAlgorithm;
 
     private final Map<String, SortingAlgorithm<Double>> sortingAlgorithms = new HashMap<>();
 
@@ -27,13 +25,12 @@ public class CommandLineMenu implements Menu {
             RealTimeListReader realTimeListReader
     ) {
         this.out = out;
-        this.bubbleSort = bubbleSort;
-        this.insertionSort = insertionSort;
+        this.defaultAlgorithm = bubbleSort;
         this.listReader = listReader;
         this.realTimeListReader = realTimeListReader;
 
-        sortingAlgorithms.put("bubble", this.bubbleSort);
-        sortingAlgorithms.put("insertion", this.insertionSort);
+        sortingAlgorithms.put("bubble", bubbleSort);
+        sortingAlgorithms.put("insertion", insertionSort);
     }
 
     @Override
@@ -54,9 +51,12 @@ public class CommandLineMenu implements Menu {
             }
         }
 
-        SortingAlgorithm<Double> sortingAlgorithm = sortingAlgorithms.getOrDefault(algorithmName, bubbleSort);
+        SortingAlgorithm<Double> sortingAlgorithm = sortingAlgorithms.getOrDefault(algorithmName, defaultAlgorithm);
+
         long start = System.currentTimeMillis();
+
         sortingAlgorithm.sort(list);
+
         long end = System.currentTimeMillis();
         long elapsed = end - start;
 

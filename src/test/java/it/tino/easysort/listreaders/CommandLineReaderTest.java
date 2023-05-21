@@ -15,19 +15,25 @@ import java.util.Scanner;
 
 public class CommandLineReaderTest {
 
-    // so that no application output is shown in the console during tests
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final String simulatedUserInput;
+    private final RealTimeListReader listReader;
 
-    private final String simulatedUserInput = "1" + System.getProperty("line.separator") + "--stop";
+    public CommandLineReaderTest() {
+        simulatedUserInput = "1" + System.getProperty("line.separator") + "--stop";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(simulatedUserInput.getBytes()));
 
-    private final Scanner scanner = new Scanner(new ByteArrayInputStream(simulatedUserInput.getBytes()));
+        // so that no application output is shown in the console during tests
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    private final RealTimeListReader listReader = new CommandLineReader(new PrintStream(out), scanner);
+        listReader = new CommandLineReader(new PrintStream(out), scanner);
+    }
 
     @Test
     public void testCommandLineReading() {
-        LinkedList<Double> expected = convertUserInput(new LinkedList<>(Arrays.asList(simulatedUserInput.split(System.getProperty("line.separator")))));
+        String lineSeparator = System.getProperty("line.separator");
+        List<String> lines = Arrays.asList(simulatedUserInput.split(lineSeparator));
 
+        LinkedList<Double> expected = convertUserInput(new LinkedList<>(lines));
         List<Double> actual = listReader.readLines();
 
         Assertions.assertEquals(expected, actual);

@@ -20,7 +20,6 @@ public class CommandLineReader implements RealTimeListReader {
     @Override
     public List<Double> readLines() {
         int i = 0;
-        Double selection;
         LinkedList<Double> list = new LinkedList<>();
 
         while (true) {
