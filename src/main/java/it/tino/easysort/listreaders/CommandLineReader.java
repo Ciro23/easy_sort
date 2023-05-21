@@ -29,7 +29,10 @@ public class CommandLineReader implements RealTimeListReader {
             } else {
                 try {
                     list.addLast(Double.valueOf(lineEntered));
-                } catch (NumberFormatException ignore) {}
+                } catch (NumberFormatException e) {
+                    out.println("[WARN] Could not add inconvertible value '" + lineEntered + "'");
+                    i--;
+                }
             }
         };
 

@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         SortingAlgorithm<Double> bubbleSort = new BubbleSort<>();
         SortingAlgorithm<Double> insertionSort = new InsertionSort<>();
-        ListReader textFileReader = new TextFileReader();
+        ListReader textFileReader = new TextFileReader(System.out);
         RealTimeListReader commandLineReader = new CommandLineReader(System.out, new Scanner(System.in));
 
         Menu menu = new CommandLineMenu(

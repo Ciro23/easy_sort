@@ -1,14 +1,17 @@
 package it.tino.easysort.listreaders;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public class TextFileReader implements ListReader {
+
+    private final PrintStream out;
+
+    public TextFileReader(PrintStream out) {
+        this.out = out;
+    }
 
     /**
      * Reads an inputStream into a list of non-empty lines
@@ -20,10 +23,13 @@ public class TextFileReader implements ListReader {
         LinkedList<Double> list = new LinkedList<>();
         try {
             while (bufferedReader.ready()) {
+                String line = bufferedReader.readLine().trim();
                 try {
-                    Double line = Double.valueOf(bufferedReader.readLine().trim());
-                    list.addLast(line);
-                } catch (NumberFormatException ignore) {}
+                    Double value = Double.valueOf(line);
+                    list.addLast(value);
+                } catch (NumberFormatException e) {
+                    out.println("[WARN] Could not read inconvertible value '" + line + "'");
+                }
             }
         } catch (IOException e) {
             return Collections.emptyList();

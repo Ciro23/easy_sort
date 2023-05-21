@@ -11,6 +11,6 @@ there are two ways to specify which list to sort:
 2. text file, write each of the elements of the list in a line of the file and execute the program with the name of the
 algorithm as the first parameter and the file to read path as the second one.
 
-list elements are read as double, any inconvertible data is not added to the final list (silently).
+list elements are read as double, any inconvertible data is not added to the final list.
 
-the goal would be allowing users to specify themself which data type to use, and to notify eventual skipped elements.
+the goal would be allowing users to specify themselves which data type to use.
