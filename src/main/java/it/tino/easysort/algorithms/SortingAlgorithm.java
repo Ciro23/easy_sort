@@ -1,4 +1,4 @@
-package it.tino.easysort.interfaces;
+package it.tino.easysort.algorithms;
 
 import java.util.List;
 

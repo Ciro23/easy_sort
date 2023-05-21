@@ -1,6 +1,5 @@
 package it.tino.easysort.listreaders;
 
-import it.tino.easysort.interfaces.RealTimeListReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

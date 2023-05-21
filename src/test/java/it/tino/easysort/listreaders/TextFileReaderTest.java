@@ -1,6 +1,5 @@
 package it.tino.easysort.listreaders;
 
-import it.tino.easysort.interfaces.ListReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

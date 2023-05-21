@@ -1,7 +1,5 @@
 package it.tino.easysort.listreaders;
 
-import it.tino.easysort.interfaces.RealTimeListReader;
-
 import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;

@@ -2,12 +2,13 @@ package it.tino.easysort;
 
 import it.tino.easysort.algorithms.BubbleSort;
 import it.tino.easysort.algorithms.InsertionSort;
-import it.tino.easysort.interfaces.ListReader;
-import it.tino.easysort.interfaces.Menu;
-import it.tino.easysort.interfaces.RealTimeListReader;
-import it.tino.easysort.interfaces.SortingAlgorithm;
+import it.tino.easysort.listreaders.ListReader;
+import it.tino.easysort.menu.Menu;
+import it.tino.easysort.listreaders.RealTimeListReader;
+import it.tino.easysort.algorithms.SortingAlgorithm;
 import it.tino.easysort.listreaders.CommandLineReader;
 import it.tino.easysort.listreaders.TextFileReader;
+import it.tino.easysort.menu.CommandLineMenu;
 
 import java.util.Scanner;
 

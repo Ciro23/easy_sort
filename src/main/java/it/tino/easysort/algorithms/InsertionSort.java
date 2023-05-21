@@ -1,7 +1,5 @@
 package it.tino.easysort.algorithms;
 
-import it.tino.easysort.interfaces.SortingAlgorithm;
-
 import java.util.List;
 
 public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<T> {

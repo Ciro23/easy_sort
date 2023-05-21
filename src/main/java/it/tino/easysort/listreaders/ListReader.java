@@ -1,4 +1,4 @@
-package it.tino.easysort.interfaces;
+package it.tino.easysort.listreaders;
 
 import java.io.InputStream;
 import java.util.List;

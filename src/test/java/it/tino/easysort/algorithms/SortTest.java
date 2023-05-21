@@ -1,6 +1,5 @@
 package it.tino.easysort.algorithms;
 
-import it.tino.easysort.interfaces.SortingAlgorithm;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

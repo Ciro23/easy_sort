@@ -1,7 +1,5 @@
 package it.tino.easysort.listreaders;
 
-import it.tino.easysort.interfaces.ListReader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
