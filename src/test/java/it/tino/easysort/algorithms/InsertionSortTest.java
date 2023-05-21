@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class InsertionSortTest {
+public class InsertionSortTest extends SortTest {
 
     private final SortingAlgorithm<Integer> insertionSort;
 
@@ -15,12 +15,8 @@ public class InsertionSortTest {
         insertionSort = new InsertionSort<>();
     }
 
-    @Test
-    public void testBubbleSort() {
-        List<Integer> list = Arrays.asList(10, 2, 3, 1, 9, 5);
-        insertionSort.sort(list);
-
-        List<Integer> expected = Arrays.asList(1, 2, 3, 5, 9, 10);
-        Assertions.assertEquals(expected, list);
+    @Override
+    protected SortingAlgorithm<Integer> getSortingAlgorithm() {
+        return insertionSort;
     }
 }
